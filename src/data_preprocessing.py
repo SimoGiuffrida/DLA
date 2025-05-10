@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from transformers import AutoTokenizer
 
 class DataPreprocessor:
-    def __init__(self, category="Toys_and_Games", max_length=512):
+    def __init__(self, category="raw_review_Toys_and_Games", max_length=512):
         self.category = category
         self.max_length = max_length
         self.tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
@@ -31,13 +31,13 @@ class DataPreprocessor:
         else:
             return 2  # Positivo
 
-    def prepare_dataset(self):
+    def prepare_dataset(self, split_to_use='full'):
         """Prepara il dataset per il training"""
         dataset = self.load_data()
         
         # Estrai features e labels
-        reviews = dataset['train']['review_body']
-        ratings = dataset['train']['star_rating']
+        reviews = dataset[split_to_use]['text']
+        ratings = dataset[split_to_use]['rating']
         
         # Converti ratings in sentiment labels
         sentiments = [self.get_sentiment(rating) for rating in ratings]

@@ -1,0 +1,45 @@
+{
+    "os": "Windows-10-10.0.26100-SP0",
+    "python": "3.10.11",
+    "heartbeatAt": "2025-05-10T13:21:36.896769",
+    "startedAt": "2025-05-10T13:21:35.377015",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "C:\\Users\\simog\\Desktop\\Magistrale\\Secondo Anno\\Primo semestre\\DLA\\DLAREF\\src\\main.py",
+    "codePathLocal": "src\\main.py",
+    "codePath": "src\\main.py",
+    "git": {
+        "remote": "https://github.com/SimoGiuffrida/DLA.git",
+        "commit": "83b600b265e120c2f91fe0ab17ae2c078239e680"
+    },
+    "email": "simogiu30@gmail.com",
+    "root": "C:/Users/simog/Desktop/Magistrale/Secondo Anno/Primo semestre/DLA/DLAREF",
+    "host": "PcSimone",
+    "username": "simog",
+    "executable": "C:\\Users\\simog\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\\python.exe",
+    "cpu_count": 6,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 1893.0,
+        "min": 0.0,
+        "max": 2100.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1893.0,
+            "min": 0.0,
+            "max": 2100.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 457.22753524780273,
+            "used": 435.1415557861328
+        }
+    },
+    "memory": {
+        "total": 7.338436126708984
+    }
+}

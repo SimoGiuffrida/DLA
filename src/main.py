@@ -1,4 +1,5 @@
 import torch
+import os
 from torch.utils.data import DataLoader, TensorDataset
 from data_preprocessing import DataPreprocessor
 from sentiment_model import SentimentClassifier, SentimentTrainer
@@ -42,7 +43,7 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
     # Prepara i dati
-    preprocessor = DataPreprocessor(category="Toys_and_Games")
+    preprocessor = DataPreprocessor(category="raw_review_Toys_and_Games")
     train_loader, val_loader, test_loader = create_data_loaders(preprocessor)
     
     # Inizializza il modello di sentiment analysis
@@ -67,6 +68,10 @@ def main():
             "val_loss": val_loss,
             "val_acc": val_acc
         })
+        
+        # Salva il checkpoint periodicamente
+        if (epoch + 1) % sentiment_trainer.save_frequency == 0:
+            sentiment_trainer.save_checkpoint(epoch + 1)
     
     # Inizializza l'ambiente RL e l'agente
     rl_env = RLEnvironment(sentiment_model, val_loader, device)
@@ -93,6 +98,10 @@ def main():
             "total_reward": total_reward,
             "rl_val_acc": val_acc
         })
+        
+        # Salva il checkpoint periodicamente durante il training RL
+        if (episode + 1) % sentiment_trainer.save_frequency == 0:
+            sentiment_trainer.save_checkpoint(num_epochs + episode + 1)
     
     # Valutazione finale sul test set
     test_loss, test_acc = sentiment_trainer.evaluate(test_loader)
